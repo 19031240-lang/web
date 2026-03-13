@@ -16,3 +16,15 @@ Route::get('/login/spotify/callback', function () {
 
     return "Bienvenido ".$user->getName();
 });
+
+Route::get('/login/discord', function () {
+    return Socialite::driver('discord')->redirect();
+});
+
+Route::get('/login/discord/callback', function () {
+
+    $user = Socialite::driver('discord')->user();
+
+    return "Bienvenido Discord".$user->getName();
+
+});
